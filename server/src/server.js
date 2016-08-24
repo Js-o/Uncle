@@ -6,7 +6,6 @@ import jobCron from './utils/jobReminderCron';
 import jobScrape from './utils/jobScraper';
 import db from './db/db-config';
 
-
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -14,7 +13,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static('client'));
 
-const router = routes(app, express);
+const router = routes(app);
+
 db.sync()
 .then(() => {
   app.listen(port, () => {
